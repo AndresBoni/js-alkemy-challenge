@@ -1,0 +1,11 @@
+{
+  "name": "alkemy",
+  "version": "1.0.0",
+  "description": "Alkemy Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrés Boni",
+  "license": "ISC"
+}
