@@ -1,11 +1,23 @@
-const express = require('express')
-const app = express()
-const port = 4000
+const sequelize  = require('./config/sequelize'); 
+const Server = require('./config/express-server');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const start = async() => {
+    try{
+        await sequelize.authenticate().then(()=>{
+            console.log('☑ Conectado correctamente a la base de datos');
+        });
+        sequelize.sync({force:false}).then(()=>{
+            console.log('☑ Base de datos sincronizada');
+        });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+        const server = new Server();
+        server.listen();
+
+    }catch(err){
+        console.log('☒ Error en la conexión a la base de datos');
+        console.log(err);
+    }
+}
+
+start();
+
