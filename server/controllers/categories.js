@@ -14,7 +14,6 @@ const getCategories = async (req, res) => {
 
 const createCategory = async (req, res) => {
 
-    //Verificamos autorización para crear categoría
     if(req.body.adminCode != process.env.JWT_SECRET_CODE ){
         return res.status(400).json({error: 'Acción Denegada, no tiene permisos suficientes'});
     }
@@ -39,7 +38,7 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
 
-    //Verificamos autorización para actualizar categoría
+
     if(req.body.adminCode != process.env.JWT_SECRET_CODE ){
         return res.status(400).json({error: 'Acción Denegada, no tiene permisos suficientes'});
     }
@@ -69,7 +68,6 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
 
-    //Verificamos autorización para borrar categoría
     if(req.body.adminCode != process.env.JWT_SECRET_CODE ){
         return res.status(400).json({error: 'Acción Denegada, no tiene permisos suficientes'});
     }
